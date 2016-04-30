@@ -69,7 +69,7 @@ public class MainActivityFragment extends Fragment {
                         try {
 
                             // Clearing Database before inserting new values
-                            getContext().deleteDatabase(ForecastContract.ForecastEntry.TABLE_NAME);
+                            getActivity().deleteDatabase(ForecastContract.ForecastEntry.TABLE_NAME);
                             getForecastData(forecastJSON);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -162,6 +162,7 @@ public class MainActivityFragment extends Fragment {
                 }
             };
 
+            forecastModel.setIconURLOFF(target.toString());
             Picasso.with(getActivity())
                     .load(forecastModel.getIconurl())
                     .into(target);
