@@ -33,7 +33,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import romeo.com.forecastchallenge.ForecastProvider.ForecastContract;
 
@@ -175,9 +174,8 @@ public class MainActivityFragment extends Fragment {
             values.put(ForecastContract.ForecastEntry.COLUMN_LOW, forecastModel.getLow());
             values.put(ForecastContract.ForecastEntry.COLUMN_DATE, forecastModel.getDate());
             values.put(ForecastContract.ForecastEntry.COLUMN_TEXT, forecastModel.getText());
-
-
             getActivity().getContentResolver().insert(ForecastContract.ForecastEntry.CONTENT_URI, values);
+
 
             forecasts.add(forecastModel);
         }
@@ -204,7 +202,6 @@ public class MainActivityFragment extends Fragment {
     int id;
 
     private void fetchOfflineData() {
-        List<ForecastModel> favouriteForecastModels = new ArrayList<>();
         final Cursor c = getActivity().getContentResolver()
                 .query(ForecastContract.ForecastEntry.CONTENT_URI, null, null, null, null);
 

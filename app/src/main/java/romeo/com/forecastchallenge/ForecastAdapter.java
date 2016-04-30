@@ -3,7 +3,6 @@ package romeo.com.forecastchallenge;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Environment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,11 +59,10 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         holder.condition.setText(forecastModel.getCondition());
         holder.date.setText("Measure date:" + "\n" + forecastModel.getTitle() + "," + forecastModel.getDate());
         holder.hiLow.setText(forecastModel.getHigh() + "/" + forecastModel.getLow());
-        Toast.makeText(c,forecastModel.getIconURLOFF(),Toast.LENGTH_LONG).show();
         if (Check()) {
             Picasso.with(c).load(forecastModel.getIconurl()).into(holder.icon);
         } else {
-            Picasso.with(c).load(Environment.getExternalStorageDirectory().getPath() + "/" + forecastModel.getCondition() + ".gif").into(holder.icon);
+            Picasso.with(c).load(forecastModel.getIconURLOFF()).into(holder.icon);
         }
 
     }
