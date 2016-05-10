@@ -43,6 +43,7 @@ public class MainActivityFragment extends Fragment {
     ArrayList<ForecastModel> forecasts = new ArrayList<>();
     RecyclerView recyclerView;
     public static String Poster;
+    ForecastAdapter adapter;
 
     public MainActivityFragment() {
     }
@@ -67,8 +68,11 @@ public class MainActivityFragment extends Fragment {
                         forecastJSON = response;
                         try {
 
+                            adapter.clear();
+
                             // Clearing Database before inserting new values
                             getActivity().deleteDatabase(ForecastContract.ForecastEntry.TABLE_NAME);
+
                             getForecastData(forecastJSON);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -182,12 +186,15 @@ public class MainActivityFragment extends Fragment {
 
 
 
-        ForecastAdapter mAdapter = new ForecastAdapter(forecasts, getContext());
+
+        adapter = new ForecastAdapter(forecasts, getContext());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
+
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        recyclerView.setAdapter(mAdapter);
+
+        recyclerView.setAdapter(adapter);
 
 
         return forecasts;
