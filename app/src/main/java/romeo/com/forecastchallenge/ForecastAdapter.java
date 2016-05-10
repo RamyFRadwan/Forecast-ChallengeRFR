@@ -80,6 +80,13 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         }
 
     }
+    public void clear() {
+        if (this.list != null) {
+            int size = this.list.size();
+            this.list.clear();
+//            this.notifyItemRangeRemoved(0, size);
+        }
+    }
 
         @Override
         public int getItemCount () {

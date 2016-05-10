@@ -181,11 +181,14 @@ public class MainActivityFragment extends Fragment {
         }
 
 
+
         ForecastAdapter mAdapter = new ForecastAdapter(forecasts, getContext());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
         recyclerView.setAdapter(mAdapter);
+
 
         return forecasts;
 
